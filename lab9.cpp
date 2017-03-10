@@ -5,8 +5,8 @@ typedef std::vector<float> vect;
 typedef unsigned int uint;
 
 
-matrix *getBlankField(size_t, size_t);
-vect *getBlankVector(size_t);
+matrix *getBlankField(uint, uint);
+vect *getBlankVector(uint);
 
 void itera(matrix&, matrix&, uint);
 vect* Jacobi(const matrix&, vect&, float);
@@ -24,7 +24,7 @@ int main() {
 
 }
 
-matrix *getBlankField(size_t rows, size_t cols) {
+matrix *getBlankField(uint rows, uint cols) {
 	matrix *field = new matrix();
 	for (uint i = 0; i < rows; i++) {
 		field->push_back(std::vector<float>());
@@ -35,7 +35,7 @@ matrix *getBlankField(size_t rows, size_t cols) {
 	return field;
 }
 
-vect *getBlankVector(size_t len) {
+vect *getBlankVector(uint len) {
 	vect *v = new vect();
 	for (uint i = 0; i < len; i++) {
 		v->push_back(false);
