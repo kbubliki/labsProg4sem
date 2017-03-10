@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 typedef std::vector<std::vector<float> > matrix;
 typedef std::vector<float> vect;
@@ -18,10 +19,36 @@ int main() {
 	matrix* A = getBlankField(4,4);
 	vect* b = getBlankVector(4);
 
-	// матрицу и вектор тут заполняем, крч, как хотим
+	A->at(0).at(0) = 13.40;
+	A->at(0).at(1) = 5.81;
+	A->at(0).at(2) = 0.70;
+	A->at(0).at(3) = 0.82;
 
-	Jacobi(*A, *b, 0.0000001); // <- вернет ответ в виде вектора
+	A->at(1).at(0) = 0.41;
+	A->at(1).at(1) = 12.50;
+	A->at(1).at(2) = 6.50;
+	A->at(1).at(3) = 0.77;
+	
+	A->at(2).at(0) = 0.36;
+	A->at(2).at(1) = 0.48;
+	A->at(2).at(2) = 11.60;
+	A->at(2).at(3) = 7.18;
 
+	A->at(3).at(0) = 0.31;
+	A->at(3).at(1) = 0.43;
+	A->at(3).at(2) = 0.54;
+	A->at(3).at(3) = 10.70;
+
+	b->at(0) = 17.7828;
+	b->at(1) = 19.0599;
+	b->at(2) = 19.9744;
+	b->at(3) = 20.5261;
+
+	vect* answer = Jacobi(*A, *b, 0.0001); // <- вернет ответ в виде вектора
+
+	for (uint i = 0; i < answer->size(); i++) {
+		std::cout << answer->at(i) << std::endl;
+	}
 }
 
 matrix *getBlankField(uint rows, uint cols) {
@@ -131,25 +158,13 @@ float sqrt(float _val) {
 	float low = 0;
 	float high = _val;
 	float mid = 0;
-	while (high - low > 0.0000001) {
+	while (high - low > 0.00001) {
 		mid = low + (high - low) / 2;
 		if (mid*mid > _val) {
 			high = mid;
 		} else {
 			low = mid;
 		}    
-	}   
+	}
 	return mid;
 }
-
-
-
-
-
-
-
-
-
-
-
-
