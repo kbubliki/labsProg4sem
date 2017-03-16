@@ -4,7 +4,7 @@
 
 typedef std::vector<float> vect;
 
-const float y_from_zero = 0.0; 					// y(0)
+const float y_from_zero = 0.0; 				// y(0)
 float f(float x, float y) {					
 	return ((0.8 - y*y) * cos(x)) + (0.3*y);	// f(x,y)
 }
@@ -28,7 +28,7 @@ void calculate(vect& X, vect& Y) {
 
 	for (int i = 0; i < 11; ++i) {
 		float x = a + h*i;
-		float y = i>0? y_prvs + h*f(x_prvs, y_prvs) : y = y_from_zero;
+		float y = i>0? y_prvs + h*f(x_prvs, y_prvs) : y_from_zero;
 		y_prvs = y;
 		x_prvs = x;
 		X.push_back(x);
